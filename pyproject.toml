@@ -1,0 +1,8 @@
+[project]
+name = "resolvex"
+version = "0.1.0"
+description = "Business entity resolution pipeline for the Amazon ML Challenge 2026"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

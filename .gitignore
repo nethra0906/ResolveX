@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+experiments/pairs/*.parquet
+experiments/models/*.joblib
+resolvex_submission.zip
+.DS_Store
+
+# Competition dataset — hundreds of MB per file, over GitHub's 100MB hard limit.
+# Keep it local only; resources/dataset/ is read-only source data anyway.
+resources/dataset/
+resources/.DS_Store
+
+# Generated output — matching_results.tsv on the full test set can approach the
+# GitHub size limit; regenerate via notebooks/01_train_and_infer_kaggle.ipynb
+# instead of committing it.
+output/*.tsv
