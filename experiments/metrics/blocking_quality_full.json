@@ -1,0 +1,15 @@
+{
+  "n_source1_entities": 150000,
+  "entities_with_ground_truth_matches": 141761,
+  "true_matches_total": 518981,
+  "true_matches_recovered": 281341,
+  "candidate_recall": 0.5421026974012536,
+  "zero_candidate_entities": 12766,
+  "avg_candidates_per_entity": 9.897255782094817,
+  "max_candidates_per_entity": 10,
+  "total_candidate_pairs": 1358240,
+  "reduction_ratio": 0.9999991226025985,
+  "blocking_time_seconds": 1258.605542898178,
+  "n_source1_used": 150000,
+  "note": "Run on a 150k representative subset of Source 1 (of 2.2M total) against the FULL Source 2/3 tables, for memory safety after OOM crashes at full scale."
+}

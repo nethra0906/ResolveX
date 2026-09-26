@@ -89,7 +89,14 @@ MAX_BLOCK_KEY_POSTING_LIST = 500
 
 # Hard cap on candidates kept per Source-1 entity after all blocking passes are
 # unioned and ranked (keeps candidate_pairs.tsv / model inference bounded).
-MAX_CANDIDATES_PER_ENTITY = 50
+# The competition scores candidate_pairs.tsv itself on top of matching_results.tsv:
+# a smaller candidate set per Source-1 entity ranks higher, independent of the
+# leaderboard score, so this is no longer purely a compute/memory tradeoff.
+# Lowered from 20 to 10 on the strength of the rarity-weighted ranking in
+# blocking.py's _join_one_side (shared keys are now scored by how specific they
+# are, not just by key type), which should let a smaller cap keep most of the
+# same true matches that the flat-weight scheme needed a larger cap to retain.
+MAX_CANDIDATES_PER_ENTITY = 10
 
 # --- Validation split -----------------------------------------------------------
 

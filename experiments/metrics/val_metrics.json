@@ -1,0 +1,7 @@
+{
+  "n_entities": 22500,
+  "macro_precision": 0.6820853968253969,
+  "macro_recall": 0.5362926984126984,
+  "macro_f0.5": 0.6238619287756186,
+  "n_source1_used_for_training": 150000
+}

@@ -1,0 +1,4 @@
+{
+  "accept_threshold": 0.6,
+  "singleton_abstain_threshold": 0.6
+}

@@ -1,0 +1,488 @@
+{
+  "n_false_positives": 1845,
+  "n_false_negatives": 38531,
+  "false_positive_examples": [
+    {
+      "source1_entity_id": "S1-705961596",
+      "other_entity_id": "S2-262851299",
+      "s1_name": "IMQ Eye Private Limited",
+      "s1_address": "M.C.B.-Z-6-22224/0003 Main Road, Adarsh Nagar, Goniana Road, Bathinda, Punjab",
+      "other_name": "VMQ Eye Private Limited",
+      "other_address": "M.C.B.-Z-6-22224/2 MAIN ROAD, ADARSH NAGAR, GONIANA ROAD, BATHINDA, ਪੰਜਾਬ"
+    },
+    {
+      "source1_entity_id": "S1-948336320",
+      "other_entity_id": "S3-250324554",
+      "s1_name": "Oliy Queenan, L.C.S.W.",
+      "s1_address": "445243 995 Road, Gore, OK",
+      "other_name": "Oliy Queenan, L.C.S.W. Greater Corp",
+      "other_address": "445250 995 Rd, Gore, Oklahoma"
+    },
+    {
+      "source1_entity_id": "S1-16642923",
+      "other_entity_id": "S3-440992769",
+      "s1_name": "Jain Hitech It Pvt Ltd",
+      "s1_address": "Celler, Shop No 1, Sarvamangal B/H Zalak Complex, Nr Pankaj Society, Bhattha, Paldi, Ahmedabad, Gujarat",
+      "other_name": "જૈન હાઇટેક આઈટી ફર્નિચર પ્રા. લિ.",
+      "other_address": "No 75 Celler, Shop No 1, Sarvamangal B/h Zalak Complex, Nr Pankaj Society, Bhattha, Paldi, Ahmedabad, ગુજરાત"
+    },
+    {
+      "source1_entity_id": "S1-951871591",
+      "other_entity_id": "S2-260822189",
+      "s1_name": "Poddar College",
+      "s1_address": "C/O Lajje, Nr -Main Rasta, Village - Shahpur, Sector-128, Noida, Gautam Buddha Nagar, Uttar Pradesh",
+      "other_name": "Poddar Logistics Ltd",
+      "other_address": "#7-20 C/O LAJJE, NR -MAIN RASTA, VILLAGE - SHAHPUR, SECTOR-128, NOIDA, Uttar Pradesh"
+    },
+    {
+      "source1_entity_id": "S1-606480359",
+      "other_entity_id": "S2-973398432",
+      "s1_name": "Creative Services Private Limited",
+      "s1_address": "H.No.8-3-214/1/A-1, Plot No.B2Madhura Nagar, Hyderabad., Andhra Pradesh, Telangana",
+      "other_name": "CREATIVE SERVICES TECHNOLOGIES TECHNOLOGIES PRIVATE",
+      "other_address": "H.NO.8-3-214/1/A-12- , PLOT NO.B2MADHURA NAGAR, HYDERABAD., Telangana"
+    },
+    {
+      "source1_entity_id": "S1-577250550",
+      "other_entity_id": "S2-568096363",
+      "s1_name": "Pixels Public School",
+      "s1_address": "92/110, Nehru Place, New Delhi, South Delhi, Delhi",
+      "other_name": "PIXELS PUBLIC SCHOOL VENTURES",
+      "other_address": "92/113, NEHRU PLACE, NEW DELHI, Delhi"
+    },
+    {
+      "source1_entity_id": "S1-96384915",
+      "other_entity_id": "S2-357229000",
+      "s1_name": "Urban Agro LLP",
+      "s1_address": "C/O Shree Chand, Vill Maithna Inder Singh, Meerut, Uttar Pradesh",
+      "other_name": "Urban Care LLP",
+      "other_address": "NO #90 C/O SHREE CHAN, VILL MAITHNA INDER SINGH, MEERUT, Uttar Pradesh"
+    },
+    {
+      "source1_entity_id": "S1-263724589",
+      "other_entity_id": "S2-898158779",
+      "s1_name": "Gadaon",
+      "s1_address": "TX, 900 30, Garland",
+      "other_name": "Gadaon Inc.",
+      "other_address": ""
+    },
+    {
+      "source1_entity_id": "S1-842881175",
+      "other_entity_id": "S2-344500042",
+      "s1_name": "Mandie Cannon, DO",
+      "s1_address": "3315 Nelson Road, Town Of Algoma, WI",
+      "other_name": "CANNRON,, MANDIE EDO",
+      "other_address": "3315 NALSON ROAD, TOWN OF ALGOMA, WI"
+    },
+    {
+      "source1_entity_id": "S1-312194988",
+      "other_entity_id": "S2-945566648",
+      "s1_name": "Dios Hospital",
+      "s1_address": "Bardhaman, West Bengal, Bijon Kumar Dey, Bulchandrapur, P O-Painta, Burdwan, C/O",
+      "other_name": "Dios Hospital Private Limited",
+      "other_address": "NO 10 C/O, BIJON KUMAR DEY, BULCHANDRAPUR, P O-PAINTA, BURDWAN, West Bengal"
+    },
+    {
+      "source1_entity_id": "S1-419235241",
+      "other_entity_id": "S2-720443779",
+      "s1_name": "Zirain Eco Limited",
+      "s1_address": "T-Hub Foundation 1/C 83/1, Level 6 Raidurg, Panmakth, Shaikpet, Hyderabad, Telangana",
+      "other_name": "Zirant Eco  Ltd",
+      "other_address": "T-HUB FOUNDATION 1/C 83/3, LEVEL 6 RAIDURG, PANMAKTH, SHAIKPET, Telangana"
+    },
+    {
+      "source1_entity_id": "S1-920710760",
+      "other_entity_id": "S2-976499976",
+      "s1_name": "Kalyankari Sangh Care",
+      "s1_address": "D-81-Old-D-422 Siddharth Nagar, Jaipur, Rajasthan",
+      "other_name": "M/s Kalyankari Sangh Care Holdings",
+      "other_address": "D-81-OLD-D-429 SIDDHARTH NAGAR, JAIPUR, Rajasthan"
+    },
+    {
+      "source1_entity_id": "S1-961941107",
+      "other_entity_id": "S3-830780592",
+      "s1_name": "Solanki Trust",
+      "s1_address": "No.4 (Kalabhyraveswara Temple Premises) Double Road 4Th Stage, Beml Layout, Rajarajeshwari N, Agar, Bangalore, Karnataka",
+      "other_name": "Solanki Trust Industries",
+      "other_address": "No.8 (Kalabhyraveswara Temple Premises) Double Road 4Th Stage, Bangalore, ಕರ್ನಾಟಕ"
+    },
+    {
+      "source1_entity_id": "S1-975769032",
+      "other_entity_id": "S2-839399033",
+      "s1_name": "Barahona Metropolitan Public",
+      "s1_address": "338 Woodcrest Street, Rialto, CA",
+      "other_name": "Barahona Metropolitan Public West",
+      "other_address": "339 Woodcrest Street, RIALTO CITY, CA"
+    },
+    {
+      "source1_entity_id": "S1-412010600",
+      "other_entity_id": "S2-692970133",
+      "s1_name": "Anc Trading Private Limited",
+      "s1_address": "Nashik, Shop No.1 Ganesh Nagar Tq Kalwan Dist Nashik, Nashik, Maharashtra",
+      "other_name": "Anc Trading Pvt",
+      "other_address": ""
+    },
+    {
+      "source1_entity_id": "S1-791155002",
+      "other_entity_id": "S3-623924843",
+      "s1_name": "Body Trust",
+      "s1_address": "3Rd Floor-B Wing, Simple Co-Op.Hsg Soc, Ramwadi, Manpada Road, B-36, Thane, Dombivali (East), Maharashtra",
+      "other_name": "Limited Body Tt",
+      "other_address": "3Rd Floor-b Wing, Simple Co-op.hsg Soc, Ramwadi, Manpada Road, महाराष्ट्र, Dombivali (East), B-47, Thane"
+    },
+    {
+      "source1_entity_id": "S1-244809602",
+      "other_entity_id": "S2-630550220",
+      "s1_name": "Services Samanvay Foods Private Limited",
+      "s1_address": "Plot No.48A, Door No.5/2, 2Nd Main Road, Bharathi Nagar, Old Perungalathur, Tambaram, Kanchipuram, Tamil Nadu",
+      "other_name": "Services Samanvay Foods Group",
+      "other_address": "Tamil Nadu, PLOT NO.61A, DOOR NO.5/2, 2ND MAIN ROAD, BHARATHI NAGAR, OLD PERUNGALATHUR, TAMBARAM"
+    },
+    {
+      "source1_entity_id": "S1-855700872",
+      "other_entity_id": "S3-402568021",
+      "s1_name": "Devsons Consultants",
+      "s1_address": "Flat No-205, Plot No-189, Kvk Classic Homes, Venture-3, Kalyan Nagar, Hyderabad, Telangana",
+      "other_name": "Devsons Consultants LLP",
+      "other_address": "Flat No-208, Plot No-189, Kvk Classic Homes, Venture-3, Kalyan Nagar, Hyderabad, TG"
+    },
+    {
+      "source1_entity_id": "S1-569898026",
+      "other_entity_id": "S2-302558393",
+      "s1_name": "Belchertown Dragon",
+      "s1_address": "296 Bardwell Street, Belchertown, MA",
+      "other_name": "Belchertown Dragon Inc",
+      "other_address": "299 1/2 BARDWELL STREET, BELCHERTOWN, MA"
+    },
+    {
+      "source1_entity_id": "S1-817683544",
+      "other_entity_id": "S2-118275942",
+      "s1_name": "Mhs Sangh",
+      "s1_address": "5Sl-07Vill-Barolanoidag.B.Nagar, Noida, Gautam Buddha Nagar, Uttar Pradesh",
+      "other_name": "Mhs Sangh (Ventures)",
+      "other_address": "5SL-18VILL-BAROLANOIDAG.B.NAGA, NOIDA, उत्तर प्रदेश"
+    },
+    {
+      "source1_entity_id": "S1-817683544",
+      "other_entity_id": "S2-671633133",
+      "s1_name": "Mhs Sangh",
+      "s1_address": "5Sl-07Vill-Barolanoidag.B.Nagar, Noida, Gautam Buddha Nagar, Uttar Pradesh",
+      "other_name": "TUNA (INDIA) INFOTECH PGIVATE [LIMITED]",
+      "other_address": "5SL-07VILL-BAROLANOIDAG.B.NAGAR, NOIDA, Uttar Pradesh"
+    },
+    {
+      "source1_entity_id": "S1-858511549",
+      "other_entity_id": "S2-654377880",
+      "s1_name": "Swastik Logistics Private Limited",
+      "s1_address": "Sy No. 33/1, D No. 2-54/4, Vanasthali Hills, Thattiannaram, Pedamberpet, Hayathnagar, Hyderabad, Telangana",
+      "other_name": "స్వస్తిక్ ప్రాజెక్ట్స్ ప్రైవేట్ లిమిటెడ్",
+      "other_address": "SY NO. 33/2, D NO. 2-54/4, VANASTHALI HILLS, THATTIANNARAM, PEDAMBERPET, HYDERABAD, Telangana"
+    },
+    {
+      "source1_entity_id": "S1-745775319",
+      "other_entity_id": "S3-68765881",
+      "s1_name": "Techno (India) Infocom Private Limited",
+      "s1_address": "312 Meter Cabin A, Surya House, Cts No. 464/A, Village Kirol, Road No. 7, Rajawadi, Vidyavihar (E), Mumbai, Maharashtra",
+      "other_name": "यूनिवर्सल डेवलपर्स एलएलपी",
+      "other_address": "Off 612 Meter Cabin B, Surya House Cts No 464/A, Village Kirol, Road No 7 Rajawadi, Vidyavihar East, Mumbai, Mumbai City, MH"
+    },
+    {
+      "source1_entity_id": "S1-617582034",
+      "other_entity_id": "S3-562869138",
+      "s1_name": "Roberta Bissett All Illumination Center",
+      "s1_address": "Asheville, Unit T, NC, 27 Beri Drive",
+      "other_name": "Roberta Bissett All Illumination Center South",
+      "other_address": "34-36 Beri Drive, Unit T, Asheville, North Carolina"
+    },
+    {
+      "source1_entity_id": "S1-627406325",
+      "other_entity_id": "S3-915653962",
+      "s1_name": "Ivc Institute of Technology",
+      "s1_address": "Srno 56/4/1, Vision One Society, Shop No 105, Pune, Pune City, Pune, Maharashtra",
+      "other_name": "Ivc Institute of Technology Pvt Ltd",
+      "other_address": "No. 420 Srno 56/4/8, Vision One Society, Shop No 105, Pune, Pune, Pune City, MH"
+    },
+    {
+      "source1_entity_id": "S1-257281473",
+      "other_entity_id": "S2-102830816",
+      "s1_name": "Kanpur Industries Private Limited",
+      "s1_address": "108/117 Gandhi Nagar, Kanpur, Uttar Pradesh",
+      "other_name": "KANPUR COSNULTANTS PRIVATE LIMITED",
+      "other_address": "DOOR NO 117/171-B Q- BL, SHARDA NAGAR, KANPUR, Uttar Pradesh"
+    },
+    {
+      "source1_entity_id": "S1-942654297",
+      "other_entity_id": "S3-259994176",
+      "s1_name": "Medicon Hospital",
+      "s1_address": "Hyderabad, First Floor, Opp. Kiran International School, Keshav Nagar, Boduppal, 9-35/3/4, Telangana, Rangareddy",
+      "other_name": "Medicon Hospital Holdings",
+      "other_address": "Hyderabad, First Floor, Opp. Kiran International School, Keshav Nagar, Boduppal, TG, Hn #137 9-35/3/17, Rangareddy"
+    },
+    {
+      "source1_entity_id": "S1-971634037",
+      "other_entity_id": "S2-70505500",
+      "s1_name": "Priya (India) Foundation Pvt Ltd",
+      "s1_address": "1A Chemox House Ist Floor7 Barrack Road, Mumbai, Maharashtra",
+      "other_name": "Priya Foundation Limited Service",
+      "other_address": "महाराष्ट्र, #12A CHEMOX HOUSE IST FLOOR7 BARRACK ROAD, MUMBAI"
+    },
+    {
+      "source1_entity_id": "S1-689430394",
+      "other_entity_id": "S2-651314786",
+      "s1_name": "Omisha Seva Samiti",
+      "s1_address": "No 28/3 1St Cross Road, A N Gupta Layout, Bangalore South, Bangalore, Karnataka",
+      "other_name": "Omisha Seva Samiti Pvt Ltd",
+      "other_address": "NO 28/24 1ST CROSS ROAD, A N GUPTA LAYOUT, BANGALORE SOUTH, Karnataka"
+    },
+    {
+      "source1_entity_id": "S1-537490349",
+      "other_entity_id": "S3-715033072",
+      "s1_name": "Eleven Advisors",
+      "s1_address": "North East, Khasra No 13, Gali No 6, Kotla Village, Hiral Lal Prop No 111, Delhi",
+      "other_name": "Eleven Advis0rs Group",
+      "other_address": "दिल्ली, Hiral Lal Prop No 120, North East, Delhi, Khasra No 13, Gali No 6, Kotla Village"
+    }
+  ],
+  "false_negative_examples": [
+    {
+      "source1_entity_id": "S1-27541239",
+      "other_entity_id": "S3-893131105",
+      "s1_name": "Nexus Anchor Rain",
+      "s1_address": "1111 Church Street, Unit 2007, Nashville, TN",
+      "other_name": "Nexus Anchor Rain",
+      "other_address": "1111 Church Street, # 2007, Nashville, Tennessee"
+    },
+    {
+      "source1_entity_id": "S1-27541239",
+      "other_entity_id": "S2-85756610",
+      "s1_name": "Nexus Anchor Rain",
+      "s1_address": "1111 Church Street, Unit 2007, Nashville, TN",
+      "other_name": "Nexus-Anchor Rain",
+      "other_address": "NASHVILLE, TN, 1111 CHURCH STREET"
+    },
+    {
+      "source1_entity_id": "S1-27541239",
+      "other_entity_id": "S3-739757636",
+      "s1_name": "Nexus Anchor Rain",
+      "s1_address": "1111 Church Street, Unit 2007, Nashville, TN",
+      "other_name": "Nexus Anchor  Service",
+      "other_address": "1111 Church Street, Nashville, Tennessee"
+    },
+    {
+      "source1_entity_id": "S1-27541239",
+      "other_entity_id": "S2-199341916",
+      "s1_name": "Nexus Anchor Rain",
+      "s1_address": "1111 Church Street, Unit 2007, Nashville, TN",
+      "other_name": "NEXUS ACORMHR RAIN",
+      "other_address": "CHURCH STREET, NASHVILLE, TN"
+    },
+    {
+      "source1_entity_id": "S1-629417405",
+      "other_entity_id": "S3-438606634",
+      "s1_name": "Moore Bitwise Inc",
+      "s1_address": "337 Oakland Avenue, Michigan City, IN",
+      "other_name": "moorebitwise.com",
+      "other_address": "0337 Oakland Avenue, Michigan City, Indiana"
+    },
+    {
+      "source1_entity_id": "S1-629417405",
+      "other_entity_id": "S2-522538408",
+      "s1_name": "Moore Bitwise Inc",
+      "s1_address": "337 Oakland Avenue, Michigan City, IN",
+      "other_name": "Moore  Bitwise Inc",
+      "other_address": "337 OAKLAND AVE, MICHHIGAN CITY CITY, IN"
+    },
+    {
+      "source1_entity_id": "S1-629417405",
+      "other_entity_id": "S3-786131946",
+      "s1_name": "Moore Bitwise Inc",
+      "s1_address": "337 Oakland Avenue, Michigan City, IN",
+      "other_name": "Moore Bítwise Inc",
+      "other_address": "Michigan City, 0337 Oakland Ave, Indiana"
+    },
+    {
+      "source1_entity_id": "S1-629417405",
+      "other_entity_id": "S3-606982601",
+      "s1_name": "Moore Bitwise Inc",
+      "s1_address": "337 Oakland Avenue, Michigan City, IN",
+      "other_name": "Moore Inc Services",
+      "other_address": "0337 Oakland Ave, Michigan City, Indiana"
+    },
+    {
+      "source1_entity_id": "S1-629417405",
+      "other_entity_id": "S2-928426462",
+      "s1_name": "Moore Bitwise Inc",
+      "s1_address": "337 Oakland Avenue, Michigan City, IN",
+      "other_name": "Moore Inc Center",
+      "other_address": "337 OAKLAND AVE, MICHHIGAN CITY CITY, IN"
+    },
+    {
+      "source1_entity_id": "S1-629417405",
+      "other_entity_id": "S3-962449159",
+      "s1_name": "Moore Bitwise Inc",
+      "s1_address": "337 Oakland Avenue, Michigan City, IN",
+      "other_name": "Moore Bitwise Inc.",
+      "other_address": "0337 Oakland Ave, Michigan City, Indiana"
+    },
+    {
+      "source1_entity_id": "S1-629417405",
+      "other_entity_id": "S3-613837325",
+      "s1_name": "Moore Bitwise Inc",
+      "s1_address": "337 Oakland Avenue, Michigan City, IN",
+      "other_name": "Moore Inc Bitwise",
+      "other_address": "0337 Oakland Avenue, Michigan City, Indiana"
+    },
+    {
+      "source1_entity_id": "S1-341506266",
+      "other_entity_id": "S2-762225006",
+      "s1_name": "Secunderabad Park Private Limited",
+      "s1_address": "Secunderabad, Hyderabad, Plot No.53, Flat No.402, Sr Estate-I Rainbow Colony, Ammuguda, Sainikpuri, Telangana, # 53/1",
+      "other_name": ">> SECUNDERABAD PARK PRIVATE",
+      "other_address": "PLOT NO.53, FLAT NO.402, SR ESTATE-I RAINBOW COLONY, AMMUGUDA, SAINIKPURI, SECUNDERABAD, # 53/1, Telangana, HYDERABAD"
+    },
+    {
+      "source1_entity_id": "S1-341506266",
+      "other_entity_id": "S3-444516861",
+      "s1_name": "Secunderabad Park Private Limited",
+      "s1_address": "Secunderabad, Hyderabad, Plot No.53, Flat No.402, Sr Estate-I Rainbow Colony, Ammuguda, Sainikpuri, Telangana, # 53/1",
+      "other_name": "Secunderabad Park Private  Limited",
+      "other_address": ""
+    },
+    {
+      "source1_entity_id": "S1-208973592",
+      "other_entity_id": "S2-165827711",
+      "s1_name": "Morgan Ameren Inc",
+      "s1_address": "LA, 266 Enterprise Drive, Houma",
+      "other_name": "MORGAN AMEREN  INC",
+      "other_address": ""
+    },
+    {
+      "source1_entity_id": "S1-208973592",
+      "other_entity_id": "S3-135578226",
+      "s1_name": "Morgan Ameren Inc",
+      "s1_address": "LA, 266 Enterprise Drive, Houma",
+      "other_name": "MORGAN AMEREN INC",
+      "other_address": "Louisiana, 267 Enterprise Drive, Bayou Cane"
+    },
+    {
+      "source1_entity_id": "S1-208973592",
+      "other_entity_id": "S3-645496810",
+      "s1_name": "Morgan Ameren Inc",
+      "s1_address": "LA, 266 Enterprise Drive, Houma",
+      "other_name": "Morgan Ámeren Inc",
+      "other_address": "267 Enterprise Drive, Houma, Louisiana"
+    },
+    {
+      "source1_entity_id": "S1-208973592",
+      "other_entity_id": "S3-931413846",
+      "s1_name": "Morgan Ameren Inc",
+      "s1_address": "LA, 266 Enterprise Drive, Houma",
+      "other_name": "@morganameren",
+      "other_address": "Bayou Cane, Louisiana, 267 Enterprise Drive"
+    },
+    {
+      "source1_entity_id": "S1-208973592",
+      "other_entity_id": "S2-481660181",
+      "s1_name": "Morgan Ameren Inc",
+      "s1_address": "LA, 266 Enterprise Drive, Houma",
+      "other_name": "INC MORGAN AEMBERN",
+      "other_address": "266 ENTERPRISE DR, BAYOU CANE, LA"
+    },
+    {
+      "source1_entity_id": "S1-208973592",
+      "other_entity_id": "S3-832332012",
+      "s1_name": "Morgan Ameren Inc",
+      "s1_address": "LA, 266 Enterprise Drive, Houma",
+      "other_name": "Morgan Ameren-Inc",
+      "other_address": "267 Enterprise Dr, Bayou Cane, Louisiana"
+    },
+    {
+      "source1_entity_id": "S1-708796012",
+      "other_entity_id": "S3-703951662",
+      "s1_name": "Board of Consumer Affairs",
+      "s1_address": "122 Dayton Yellow Springs Road, Unit 4, Fairborn, OH",
+      "other_name": "Board of",
+      "other_address": "122 Dayon Yellow Springs Rd, # 4, Fairborn, Ohio"
+    },
+    {
+      "source1_entity_id": "S1-708796012",
+      "other_entity_id": "S3-974934575",
+      "s1_name": "Board of Consumer Affairs",
+      "s1_address": "122 Dayton Yellow Springs Road, Unit 4, Fairborn, OH",
+      "other_name": "Board of Consumer Services",
+      "other_address": "122 Dayton Yellow Springs Road, # 4, Fairborn, Ohio"
+    },
+    {
+      "source1_entity_id": "S1-708796012",
+      "other_entity_id": "S2-994438467",
+      "s1_name": "Board of Consumer Affairs",
+      "s1_address": "122 Dayton Yellow Springs Road, Unit 4, Fairborn, OH",
+      "other_name": "Board of Consumer Affair",
+      "other_address": "122 DAYTON YELLOW SPRINGS ROAD, FAIRBORN, OH"
+    },
+    {
+      "source1_entity_id": "S1-708796012",
+      "other_entity_id": "S3-335174066",
+      "s1_name": "Board of Consumer Affairs",
+      "s1_address": "122 Dayton Yellow Springs Road, Unit 4, Fairborn, OH",
+      "other_name": "Board of Consumer Affairs Ltd",
+      "other_address": "122 Dayton Yellow Springs Rd, # 4, Fairborn, Ohio"
+    },
+    {
+      "source1_entity_id": "S1-708796012",
+      "other_entity_id": "S3-338279058",
+      "s1_name": "Board of Consumer Affairs",
+      "s1_address": "122 Dayton Yellow Springs Road, Unit 4, Fairborn, OH",
+      "other_name": "Board of Consumer Affairs Co",
+      "other_address": "122 Dayton Yellow Springs Rd, # 4, Fairborn, Ohio"
+    },
+    {
+      "source1_entity_id": "S1-708796012",
+      "other_entity_id": "S2-440628035",
+      "s1_name": "Board of Consumer Affairs",
+      "s1_address": "122 Dayton Yellow Springs Road, Unit 4, Fairborn, OH",
+      "other_name": ">> Board of Consumer Affairs LLC",
+      "other_address": "122 DAYTON YELLOW SPRINGS ROAD, FAIRBORN, OH"
+    },
+    {
+      "source1_entity_id": "S1-477458226",
+      "other_entity_id": "S3-931784124",
+      "s1_name": "Durgesh Consulting Private Limited",
+      "s1_address": "Flat No 507, Fortview Green Ear Aprts Near Kendriya Vihar, Hydershakote, Bandl, Guda, Hyderabad, Telangana",
+      "other_name": "Durgesh Consulting Private  Ltd",
+      "other_address": "No 5-07, Hyderabad, TG"
+    },
+    {
+      "source1_entity_id": "S1-907635568",
+      "other_entity_id": "S3-444440266",
+      "s1_name": "Ridge Bridge",
+      "s1_address": "3314 Dungarvan Drive, City Of El Paso, TX",
+      "other_name": "Ridge Bridge Ltd",
+      "other_address": "03314 Dungarvan Dr, El Paso, Texas"
+    },
+    {
+      "source1_entity_id": "S1-907635568",
+      "other_entity_id": "S2-50264131",
+      "s1_name": "Ridge Bridge",
+      "s1_address": "3314 Dungarvan Drive, City Of El Paso, TX",
+      "other_name": "ridge bridge",
+      "other_address": "3314 DUNGRAVAN DR, CITY OF EL PASO, TX"
+    },
+    {
+      "source1_entity_id": "S1-907635568",
+      "other_entity_id": "S3-756417613",
+      "s1_name": "Ridge Bridge",
+      "s1_address": "3314 Dungarvan Drive, City Of El Paso, TX",
+      "other_name": "Ridge Bridge Co",
+      "other_address": "03314 Dungarvan Drive, El Paso, Texas"
+    },
+    {
+      "source1_entity_id": "S1-8092452",
+      "other_entity_id": "S3-183988476",
+      "s1_name": "Urban Nails!",
+      "s1_address": "1262 Grandstaff Avenue, Lancaster, OH",
+      "other_name": "Urban Náils! - 1389976563",
+      "other_address": "1262 Grandstff Ave, Lancaster, Ohio"
+    }
+  ]
+}

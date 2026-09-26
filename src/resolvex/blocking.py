@@ -18,6 +18,7 @@ technique ("stop-token" pruning).
 
 from __future__ import annotations
 
+import numpy as np
 import pandas as pd
 
 from resolvex import normalization as norm
@@ -122,8 +123,15 @@ def _explode_keys(prepped: pd.DataFrame) -> pd.DataFrame:
 
 def _prune_common_keys(
     left_long: pd.DataFrame, right_long: pd.DataFrame
-) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Drop (key_type, country, key) groups whose left*right count would blow up the join."""
+) -> tuple[pd.DataFrame, pd.DataFrame, float]:
+    """Drop (key_type, country, key) groups whose left*right count would blow up the join.
+
+    Also returns the total estimated pair count across surviving groups (sum of
+    left_n * right_n), used by the caller to size merge chunks — at full dataset
+    scale, even with every individual group under MAX_KEY_PAIR_PRODUCT, the *sum*
+    across the (very large) number of surviving groups can still be hundreds of
+    millions of rows, which a single one-shot pandas merge cannot materialize.
+    """
     group_cols = ["key_type", "country_norm", "key"]
     left_counts = left_long.groupby(group_cols, observed=True).size().rename("left_n")
     right_counts = right_long.groupby(group_cols, observed=True).size().rename("right_n")
@@ -136,16 +144,19 @@ def _prune_common_keys(
     joined = pd.concat([left_counts, right_counts], axis=1, join="inner")
     joined = joined[joined["left_n"] * joined["right_n"] <= MAX_KEY_PAIR_PRODUCT]
     keep_index = joined.index
+    total_estimated_pairs = float((joined["left_n"] * joined["right_n"]).sum())
 
     left_long = left_long.set_index(group_cols)
     right_long = right_long.set_index(group_cols)
     left_kept = left_long.loc[left_long.index.isin(keep_index)].reset_index()
     right_kept = right_long.loc[right_long.index.isin(keep_index)].reset_index()
-    return left_kept, right_kept
+    return left_kept, right_kept, total_estimated_pairs
 
 
-# Rough informativeness weight per key type — rarer/higher-precision key types score
-# more when a candidate is ranked before truncation to MAX_CANDIDATES_PER_ENTITY.
+# Base informativeness weight per key type — combined multiplicatively with the
+# per-key rarity weight below, so e.g. a shared address digit is always treated
+# as more specific than a shared name prefix, independent of how common that
+# particular digit happens to be.
 _KEY_TYPE_WEIGHT = {
     "addr_digit": 3.0,
     "name_token": 1.5,
@@ -154,33 +165,110 @@ _KEY_TYPE_WEIGHT = {
 }
 
 
+# Target number of merged rows per chunk — bounds peak memory of any single
+# pandas merge regardless of total dataset scale (a full-scale run produced a
+# 396M-row single-shot merge that exhausted available RAM; see MAX_ROWS_PER_MERGE_CHUNK).
+MAX_ROWS_PER_MERGE_CHUNK = 3_000_000
+
+
 def _join_one_side(
     s1_long: pd.DataFrame, other_long: pd.DataFrame, other_source_label: str
 ) -> pd.DataFrame:
-    """Inner-join S1 keys against one other source's keys; return scored pairs."""
-    s1_kept, other_kept = _prune_common_keys(s1_long, other_long)
+    """Inner-join S1 keys against one other source's keys; return scored pairs.
+
+    Each shared key contributes ``key_type_weight / log2(candidate_side_posting_count + 2)``
+    rather than a flat per-key-type weight. Without this, a key shared by 400
+    candidate-side records (near the pruning cap, and therefore weakly
+    discriminative) scores identically to one shared by only 2 records (almost
+    certainly the same business) — the flat scheme was letting weak, common-key
+    matches crowd out strong, rare-key matches once results were truncated to
+    MAX_CANDIDATES_PER_ENTITY. Weighting by rarity lets a much smaller candidate
+    cap keep the same true matches, which matters because candidate set size is
+    itself part of the competition's final ranking, not just an internal recall
+    / compute tradeoff.
+
+    The join itself is done in hash-bucketed chunks rather than one shot: even
+    with every individual (key_type, country, key) group bounded by
+    MAX_KEY_PAIR_PRODUCT, the sum of pair counts across the very large number of
+    surviving groups at full dataset scale can still be hundreds of millions of
+    rows, which a single merge cannot materialize in memory. Bucketing by a hash
+    of (key_type, key) splits the join into independent chunks — a key's full
+    posting lists on both sides always land in the same bucket, so per-bucket
+    partial results can simply be concatenated and re-summed.
+    """
+    s1_kept, other_kept, total_estimated_pairs = _prune_common_keys(s1_long, other_long)
     if s1_kept.empty or other_kept.empty:
         return pd.DataFrame(columns=["source1_entity_id", "candidate_entity_id", "weight"])
 
-    merged = s1_kept.merge(
-        other_kept,
-        on=["key_type", "country_norm", "key"],
-        suffixes=("_s1", "_other"),
-    )
-    merged["weight"] = merged["key_type"].map(_KEY_TYPE_WEIGHT).astype(float)
-    scored = (
-        merged.groupby(["entity_id_s1", "entity_id_other"], observed=True)["weight"]
-        .sum()
+    group_cols = ["key_type", "country_norm", "key"]
+    key_rarity = (
+        other_kept.groupby(group_cols, observed=True)
+        .size()
+        .rename("candidate_side_count")
         .reset_index()
-        .rename(
-            columns={
-                "entity_id_s1": "source1_entity_id",
-                "entity_id_other": "candidate_entity_id",
-            }
-        )
     )
-    scored["source"] = other_source_label
-    return scored
+
+    n_buckets = max(1, int(total_estimated_pairs // MAX_ROWS_PER_MERGE_CHUNK) + 1)
+    bucket_cols = ["key_type", "key"]
+    s1_bucket = pd.util.hash_pandas_object(s1_kept[bucket_cols], index=False) % n_buckets
+    other_bucket = pd.util.hash_pandas_object(other_kept[bucket_cols], index=False) % n_buckets
+
+    # Accumulate as a plain (columns, not MultiIndex) DataFrame, compacted
+    # (dedup-and-sum) after every bucket. A single entity pair can share keys
+    # that land in different buckets (different key types/keys hash
+    # differently), so results still need re-summing across buckets — but
+    # holding every bucket's raw partial result until one final concat+groupby
+    # (as originally written) required materializing a combined MultiIndex over
+    # all of them at once, which is what actually exhausted memory even after
+    # chunking the merge itself. Compacting incrementally keeps the running
+    # accumulator bounded by the number of *distinct* pairs seen so far rather
+    # than the sum of every bucket's raw row count.
+    accumulator = None
+    pending = []
+    PENDING_FLUSH_EVERY = 8
+
+    def _flush(acc, buf):
+        if not buf:
+            return acc
+        parts = buf if acc is None else [acc] + buf
+        merged_acc = pd.concat(parts, ignore_index=True)
+        return merged_acc.groupby(["entity_id_s1", "entity_id_other"], observed=True, as_index=False)[
+            "weight"
+        ].sum()
+
+    for b in range(n_buckets):
+        s1_part = s1_kept[s1_bucket.to_numpy() == b]
+        if s1_part.empty:
+            continue
+        other_part = other_kept[other_bucket.to_numpy() == b]
+        if other_part.empty:
+            continue
+
+        merged = s1_part.merge(other_part, on=group_cols, suffixes=("_s1", "_other"))
+        if merged.empty:
+            continue
+        merged = merged.merge(key_rarity, on=group_cols)
+        type_weight = merged["key_type"].map(_KEY_TYPE_WEIGHT).astype(float)
+        rarity_weight = 1.0 / np.log2(merged["candidate_side_count"].astype(float) + 2.0)
+        merged["weight"] = type_weight * rarity_weight
+
+        partial = merged.groupby(["entity_id_s1", "entity_id_other"], observed=True, as_index=False)[
+            "weight"
+        ].sum()
+        pending.append(partial)
+        del merged, partial
+
+        if len(pending) >= PENDING_FLUSH_EVERY:
+            accumulator = _flush(accumulator, pending)
+            pending = []
+
+    accumulator = _flush(accumulator, pending)
+    if accumulator is None or accumulator.empty:
+        return pd.DataFrame(columns=["source1_entity_id", "candidate_entity_id", "weight"])
+
+    accumulator.columns = ["source1_entity_id", "candidate_entity_id", "weight"]
+    accumulator["source"] = other_source_label
+    return accumulator.reset_index(drop=True)
 
 
 def generate_candidates(
@@ -195,17 +283,23 @@ def generate_candidates(
     candidates simply have no rows here — the caller fills them in as empty when
     writing candidate_pairs.tsv).
     """
-    s1_prepped = _prep(s1_df)
-    s2_prepped = _prep(s2_df)
-    s3_prepped = _prep(s3_df)
+    import gc
 
-    s1_long = _explode_keys(s1_prepped)
-    s2_long = _explode_keys(s2_prepped)
-    s3_long = _explode_keys(s3_prepped)
+    s1_long = _explode_keys(_prep(s1_df))
 
+    s2_long = _explode_keys(_prep(s2_df))
     pairs_s2 = _join_one_side(s1_long, s2_long, "S2")
+    del s2_long
+    gc.collect()
+
+    s3_long = _explode_keys(_prep(s3_df))
     pairs_s3 = _join_one_side(s1_long, s3_long, "S3")
+    del s3_long, s1_long
+    gc.collect()
+
     all_pairs = pd.concat([pairs_s2, pairs_s3], ignore_index=True)
+    del pairs_s2, pairs_s3
+    gc.collect()
 
     if all_pairs.empty:
         return all_pairs.assign(source1_entity_id=[], candidate_entity_id=[], weight=[])

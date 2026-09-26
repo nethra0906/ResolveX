@@ -1,0 +1,18 @@
+{
+  "exact_name": {
+    "best_threshold": 0.05,
+    "macro_f0.5": 0.30161707888140776
+  },
+  "exact_name_country": {
+    "best_threshold": 0.05,
+    "macro_f0.5": 0.30161707888140776
+  },
+  "weighted_fuzzy": {
+    "best_threshold": 0.8,
+    "macro_f0.5": 0.521568105762984
+  },
+  "tfidf_retrieval": {
+    "best_threshold": 0.7,
+    "macro_f0.5": 0.45797025425162435
+  }
+}
